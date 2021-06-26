@@ -1,0 +1,268 @@
+-- Gui made by Noob_Hackel
+-- source : https://v3rmillion.net/showthread.php?tid=1123172
+
+-- Instances:
+
+local InsertedObjects = Instance.new("ScreenGui")
+local Gradient = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UIGradient = Instance.new("UIGradient")
+local UICorner = Instance.new("UICorner")
+local MoneyScriptButton = Instance.new("TextButton")
+local Shadow = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local FrameOfLamp = Instance.new("Frame")
+local AntiAFKButton = Instance.new("TextButton")
+local Shadow_2 = Instance.new("Frame")
+local TextLabel_3 = Instance.new("TextLabel")
+local BuyAllItemButton = Instance.new("TextButton")
+local Shadow_3 = Instance.new("Frame")
+local TextLabel_4 = Instance.new("TextLabel")
+
+--Properties:
+
+InsertedObjects.Name = "InsertedObjects"
+InsertedObjects.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Gradient.Name = "Gradient"
+Gradient.Parent = InsertedObjects
+Gradient.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Gradient.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Gradient.BorderSizePixel = 0
+Gradient.Position = UDim2.new(0.394440025, 0, 0.37809521, 0)
+Gradient.Size = UDim2.new(0, 202, 0, 246)
+Gradient.Active = true
+Gradient.Draggable = true
+function onKeyPress(inputObject, gameProcessedEvent)
+	if inputObject.KeyCode == Enum.KeyCode.RightShift then
+		if Gradient.Visible == false then
+			Gradient.Visible = true
+		else
+			Gradient.Visible = false
+		end
+	end
+end
+
+game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+
+TextLabel.Parent = Gradient
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 100.000
+TextLabel.Position = UDim2.new(0.0924598053, 0, 0.0419513807, 0)
+TextLabel.Size = UDim2.new(0, 168, 0, 46)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Stranger Things: Starcourt Mall Script"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 20.000
+TextLabel.TextWrapped = true
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(30, 30, 30)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(30, 30, 30))}
+UIGradient.Parent = Gradient
+
+UICorner.CornerRadius = UDim.new(0, 4)
+UICorner.Parent = Gradient
+
+MoneyScriptButton.Name = "MoneyScriptButton"
+MoneyScriptButton.Parent = Gradient
+MoneyScriptButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+MoneyScriptButton.BorderSizePixel = 0
+MoneyScriptButton.Position = UDim2.new(0.0535148941, 0, 0.27323246, 0)
+MoneyScriptButton.Size = UDim2.new(0, 180, 0, 45)
+MoneyScriptButton.ZIndex = 2
+MoneyScriptButton.Font = Enum.Font.GothamSemibold
+MoneyScriptButton.Text = ""
+MoneyScriptButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MoneyScriptButton.TextScaled = true
+MoneyScriptButton.TextSize = 14.000
+MoneyScriptButton.TextWrapped = true
+local on = true
+
+MoneyScriptButton.MouseButton1Click:Connect(function()
+	if not on then on = true
+		getgenv().autoCoin = true 
+
+		repeat wait() until game:IsLoaded() 
+
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+
+			game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+
+		end)
+
+		game:GetService("Players").LocalPlayer.PlayerGui.ShootingGalleryGui:Destroy()
+
+		while autoCoin == true do
+
+			wait(1)
+
+			game:GetService("ReplicatedStorage").ShootingGallery.RemoteEvents.RequestGalleryStart:FireServer()
+
+			wait(0.1)
+
+			local A_1 =
+
+				{
+					["TargetName"] = "Demogorgon",
+					["score"] = math.huge,
+					["position"] = Vector3.new()
+				}
+
+			local Event = game:GetService("ReplicatedStorage").ShootingGallery.RemoteEvents.Statistics.TargetHit
+
+			Event:FireServer(A_1)
+
+			wait(0.1)
+
+			game:GetService("ReplicatedStorage").ShootingGallery.RemoteEvents.FinalBeatCleared:FireServer(true)
+
+		end
+	else on = false
+		getgenv().autoCoin = false --Set to false and execute again before leaving to prevent crashes.
+
+		repeat wait() until game:IsLoaded() 
+
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+
+			game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+
+		end)
+
+		game:GetService("Players").LocalPlayer.PlayerGui.ShootingGalleryGui:Destroy()
+
+		while autoCoin == true do
+
+			wait(1)
+
+			game:GetService("ReplicatedStorage").ShootingGallery.RemoteEvents.RequestGalleryStart:FireServer()
+
+			wait(0.1)
+
+			local A_1 =
+
+				{
+					["TargetName"] = "Demogorgon",
+					["score"] = math.huge,
+					["position"] = Vector3.new()
+				}
+
+			local Event = game:GetService("ReplicatedStorage").ShootingGallery.RemoteEvents.Statistics.TargetHit
+
+			Event:FireServer(A_1)
+
+			wait(0.1)
+
+			game:GetService("ReplicatedStorage").ShootingGallery.RemoteEvents.FinalBeatCleared:FireServer(true)
+
+		end
+	end
+end)
+
+Shadow.Name = "Shadow"
+Shadow.Parent = MoneyScriptButton
+Shadow.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+Shadow.BorderSizePixel = 0
+Shadow.Size = UDim2.new(1, 0, 1, 4)
+
+TextLabel_2.Parent = MoneyScriptButton
+TextLabel_2.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextLabel_2.Size = UDim2.new(1, -20, 1, -20)
+TextLabel_2.ZIndex = 2
+TextLabel_2.Font = Enum.Font.GothamSemibold
+TextLabel_2.Text = "Money Script"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
+FrameOfLamp.Name = "FrameOfLamp"
+FrameOfLamp.Parent = MoneyScriptButton
+FrameOfLamp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FrameOfLamp.Size = UDim2.new(0, 180, 0, 49)
+
+AntiAFKButton.Name = "AntiAFKButton"
+AntiAFKButton.Parent = Gradient
+AntiAFKButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+AntiAFKButton.BorderSizePixel = 0
+AntiAFKButton.Position = UDim2.new(0.0535148606, 0, 0.761941671, 0)
+AntiAFKButton.Size = UDim2.new(0, 180, 0, 45)
+AntiAFKButton.ZIndex = 2
+AntiAFKButton.Font = Enum.Font.GothamSemibold
+AntiAFKButton.Text = ""
+AntiAFKButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+AntiAFKButton.TextScaled = true
+AntiAFKButton.TextSize = 14.000
+AntiAFKButton.TextWrapped = true
+AntiAFKButton.MouseButton1Click:Connect(function()
+	local VirtualUser = game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+		VirtualUser:CaptureController()
+		VirtualUser:ClickButton2(Vector2.new())
+	end)
+	print("Anti afk working.")
+end)
+
+Shadow_2.Name = "Shadow"
+Shadow_2.Parent = AntiAFKButton
+Shadow_2.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+Shadow_2.BorderSizePixel = 0
+Shadow_2.Size = UDim2.new(1, 0, 1, 4)
+
+TextLabel_3.Parent = AntiAFKButton
+TextLabel_3.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel_3.BorderSizePixel = 0
+TextLabel_3.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextLabel_3.Size = UDim2.new(1, -20, 1, -20)
+TextLabel_3.ZIndex = 2
+TextLabel_3.Font = Enum.Font.GothamSemibold
+TextLabel_3.Text = "Anti AFK"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextScaled = true
+TextLabel_3.TextSize = 14.000
+TextLabel_3.TextWrapped = true
+
+BuyAllItemButton.Name = "BuyAllItemButton"
+BuyAllItemButton.Parent = Gradient
+BuyAllItemButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+BuyAllItemButton.BorderSizePixel = 0
+BuyAllItemButton.Position = UDim2.new(0.0535148606, 0, 0.522104263, 0)
+BuyAllItemButton.Size = UDim2.new(0, 180, 0, 45)
+BuyAllItemButton.ZIndex = 2
+BuyAllItemButton.Font = Enum.Font.GothamSemibold
+BuyAllItemButton.Text = ""
+BuyAllItemButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+BuyAllItemButton.TextScaled = true
+BuyAllItemButton.TextSize = 14.000
+BuyAllItemButton.TextWrapped = true
+BuyAllItemButton.MouseButton1Click:Connect(function()
+	loadstring(game:HttpGet(('https://raw.githubusercontent.com/NoobHackel/StrangerThingsMoneyScript/main/buyallitem'),true))()
+end)
+
+Shadow_3.Name = "Shadow"
+Shadow_3.Parent = BuyAllItemButton
+Shadow_3.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+Shadow_3.BorderSizePixel = 0
+Shadow_3.Size = UDim2.new(1, 0, 1, 4)
+
+TextLabel_4.Parent = BuyAllItemButton
+TextLabel_4.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.BackgroundTransparency = 1.000
+TextLabel_4.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel_4.BorderSizePixel = 0
+TextLabel_4.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextLabel_4.Size = UDim2.new(1, -20, 1, -20)
+TextLabel_4.ZIndex = 2
+TextLabel_4.Font = Enum.Font.GothamSemibold
+TextLabel_4.Text = "Buy All Item"
+TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.TextScaled = true
+TextLabel_4.TextSize = 14.000
+TextLabel_4.TextWrapped = true
